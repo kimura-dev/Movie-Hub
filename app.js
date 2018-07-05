@@ -6,7 +6,7 @@ $('#submit').click(function(e){
 
 function OMDBRequest(){
 	$('#submit').click(function(){
-		$.getJSON('http://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
+		$.getJSON('https://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
 			console.log(data);
 			console.log(data.Title);
 			console.log(data.Released);
