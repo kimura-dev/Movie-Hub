@@ -8,23 +8,6 @@ function OMDBRequest(){
 	$('#submit').click(function(){
 		$.getJSON('https://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
 			console.log(data);
-			console.log(data.Title);
-			console.log(data.Released);
-			console.log(data.Runtime);
-			console.log(data.Director);
-			console.log(data.Writers);
-			console.log(data.Actors);
-			console.log(data.Plot);
-			console.log(data.Awards);
-			console.log(data.Poster);
-			console.log(data.Ratings[0].Source);
-			console.log(data.Ratings[0].Value);
-			console.log(data.Ratings[1].Source);
-			console.log(data.Ratings[1].Value);
-			console.log(data.Ratings[2].Source);
-			console.log(data.Ratings[2].Value);
-			console.log(data.Metascore);
-			console.log(data.imdbRating);
 			showResults(data);
 		})
 	})
