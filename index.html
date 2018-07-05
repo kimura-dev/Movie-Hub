@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OMDB API</title>
+	<link rel="stylesheet" type="text/css" href="float-grid.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div class="row">
+		<div class="col-12">
+			<h1>Search OMBD</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<form>
+				<label for="search">Movie Title:
+					<input id="search" type="text" name="movie" title="search">
+				</label>
+				<label>Year:
+					<input id="year" type="number" name="year" title="year">
+				</label>
+
+				<button id="submit">Search</button>
+			</form>
+		</div>
+	</div>
+	<div id="output" class="row">
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
