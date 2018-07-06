@@ -30,7 +30,7 @@ function omdbResults(data){
 			<p><img src="imdb.png"> <span>${data.Ratings[0].Value}</span></p>
 			<p><img src="icons8-rotten-tomatoes-40.png"> <span>${data.Ratings[1].Value}</span></p>
 			<p>${data.Ratings[2].Source} <span>${data.Ratings[2].Value}</span></p>
-			<p>Release Date: ${data.Released}</p>
+			<p>Original Release: ${data.Released}</p>
 			<p>Runtime: ${data.Runtime}</p>
 			<p>Director: ${data.Director}</p>
 			<p>Actors: ${data.Actors}</p>
@@ -71,7 +71,7 @@ function searchYoutube() {
 	    var html = "";
 	    $.each(data['items'], function (index, value) {
 	        html += '<div class="col-4"><p class="title">' + value.snippet.title + '</p>';
-	        html += '<p class="url"><a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="_blank">' + value.id.videoId + '</a></p>';
+	        //html += '<p class="url"><a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="_blank">' + value.id.videoId + '</a></p>';
 	        html += '<p><img  class="thumbnail" src="' + value.snippet.thumbnails.medium.url + '" videoID="' + value.id.videoId + '"></p>';
 	        html += '</div>';
 	    })
