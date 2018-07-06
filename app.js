@@ -9,10 +9,11 @@ $('form').submit(function(e){
 
 function omdbRequest(){
 	$('#submit').click(function(){
-		$.ajaxSetup({ "error":function() { alert("error"); } });
+		$.ajaxSetup({ "error":function() { alert("Make sure movie title is correct!"); } });
 		$.getJSON('https://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
 			omdbResults(data);
 			searchYoutube();
+			wikiResults();
 		});
 
 	})
@@ -20,12 +21,13 @@ function omdbRequest(){
 }
 
 function omdbResults(data){
-	let ratingArray = [];
+	/*let ratingArray = [];
 	data.Ratings.forEach(function(rating,index){
 		ratingArray[index] = {
 
 		}
-	})
+	})*/
+	//console.log(data.Ratings);
 	$('#output').html(`
 		<div class="col-4">
 			<h2>${data.Title}</h2>
@@ -46,15 +48,15 @@ function omdbResults(data){
 			<p>Actors: ${data.Actors}</p>
 			<p>Awards: ${data.Awards}</p>
 		</div>`);
-	console.log(data.Ratings);
-
 }
-var pageToken = {};
+
+let pageToken = {};
 
 $('.overlayBg').click(function () {
     $('.popup').hide()
     $('.overlayBg').hide()
 })
+
 $('#videoResults').on('click', '.thumbnail', function () {
     $('.popup').show()
     $('.overlayBg').show();
@@ -62,6 +64,10 @@ $('#videoResults').on('click', '.thumbnail', function () {
     $('.popup iframe').attr('src', 'https://www.youtube.com/embed/' + $(this).attr('videoID'));
 })
 
+$('.page').click(function(){
+	pageToken.current = $(this).val() == 'next' ? pageToken.nextPage : pageToken.prevPage;
+	searchYoutube();
+})
 function searchYoutube() {
 	let query = $('#search').val()+' '+'the movie';
 	$.ajax({
@@ -72,12 +78,12 @@ function searchYoutube() {
 	        key: 'AIzaSyA9YIeJMUAUAO5QaCo0wzfbdGlLIbjo1D4'
 	        , q: query
 	        , part: 'snippet'
-	        , maxResults: 12
+	        , maxResults: 4
 	        , pageToken: pageToken.current
 	    }
 	}).done(function youtubeOutput (data) {
-	    pageToken.nextPage = data.nextPageToken;
-	    pageToken.prevPage = data.prevPageToken;
+	   		pageToken.nextPage = data.nextPageToken;
+	 	    pageToken.prevPage = data.prevPageToken;
 	    var html = "";
 	    $.each(data['items'], function (index, value) {
 	        html += '<div class="col-4"><p class="title">' + value.snippet.title + '</p>';
@@ -89,5 +95,32 @@ function searchYoutube() {
 	})
 }	
 
+function wikiResults() {
+	let searchTerm = $('#search').val()+' '+'movie';
+	let url = 'https://en.wikipedia.org/w/api.php?action=query&titles='+$('#search').val()+'&rvprop=content&format=json&action=opensearch&origin=*&search=' + searchTerm;
+	//let outputWiki = $('#outputWiki').html(`<h2>Movie Search ${searchTerm}</h2>`);
+	$.getJSON(url, function (response) {
+	    console.log(response)
+		
+		for (var x in response) {
+	        var holder = typeof response[x] == 'string' ? response[x] : response[x][0];
+	        $('#outputWiki').html(`<a href="${holder}">Wiki Info</a>`);
+	        //console.log(holder);
+	    }   
+	})
+}
 
-
+/*$.ajax( {
+    url: 'https://en.wikipedia.org/w/api.php?action=query&titles='+$('#search').val()+'&rvprop=content&format=json',
+    dataType: 'json',
+    type: 'POST',
+    headers: { 'Api-User-Agent': 'Example/1.0' },
+    success: function(response) {
+    	for (var x in response) {
+	        var holder = typeof response[x] == 'string' ? response[x] : response[x][0];
+	        $('#outputWiki').html(`<a href="${holder}">Wiki Info</a>`);
+	    }
+    }
+});*/
+  //&action=opensearch&origin=*&search=' + searchTerm
+//'<div class="dataOutput">' + holder + '</div>'
