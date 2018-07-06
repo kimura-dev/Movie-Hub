@@ -22,14 +22,14 @@ function omdbResults(data){
 		<div class="col-4">
 			<h2>${data.Title}</h2>
 			<img src="${data.Poster}">
+		</div>
+		<div class="col-4">
 			<p><strong>Plot</strong>: ${data.Plot}</p>
 		</div>
 		<div class="col-4">
 			<p>${data.Ratings[0].Source}:<span>${data.Ratings[0].Value}</span></p>
-			<p>${data.Ratings[1].Source}<span>${data.Ratings[1].Value}</span></p>
-			<p>${data.Ratings[2].Source}<span>${data.Ratings[2].Value}</span></p>
-		</div>
-		<div class="col-4">
+			<p>${data.Ratings[1].Source}:<span>${data.Ratings[1].Value}</span></p>
+			<p>${data.Ratings[2].Source}:<span>${data.Ratings[2].Value}</span></p>
 			<p>Release Date: ${data.Released}</p>
 			<p>Runtime: ${data.Runtime}</p>
 			<p>Director: ${data.Director}</p>
