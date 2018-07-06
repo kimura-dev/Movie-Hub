@@ -36,8 +36,13 @@ input {
 
 #videoResults {
   margin: 0 auto;
-  width: 1140px;
-  height: 100%;
+  /*width: 1140px;*/
+  /*height: 100%;*/
+}
+
+.thumbnail:hover {
+	cursor: pointer;
+	background-color: rgba(0,0,0,0.6);
 }
 
 /*#videoResults .col-4 {

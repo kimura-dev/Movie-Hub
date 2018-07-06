@@ -2,22 +2,30 @@
 $('.popup').hide()
 $('.overlayBg').hide()
 
-$('#submit').click(function(e){
+$('form').submit(function(e){
 	e.preventDefault();
 	omdbRequest();
 });
 
 function omdbRequest(){
 	$('#submit').click(function(){
+		$.ajaxSetup({ "error":function() { alert("error"); } });
 		$.getJSON('https://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
 			omdbResults(data);
 			searchYoutube();
-		})
+		});
+
 	})
 
 }
 
 function omdbResults(data){
+	let ratingArray = [];
+	data.Ratings.forEach(function(rating,index){
+		ratingArray[index] = {
+
+		}
+	})
 	$('#output').html(`
 		<div class="col-4">
 			<h2>${data.Title}</h2>
@@ -29,16 +37,18 @@ function omdbResults(data){
 		<div class="col-4">
 			<p><img src="imdb.png"> <span>${data.Ratings[0].Value}</span></p>
 			<p><img src="icons8-rotten-tomatoes-40.png"> <span>${data.Ratings[1].Value}</span></p>
-			<p>${data.Ratings[2].Source} <span>${data.Ratings[2].Value}</span></p>
+			<p>${data.Ratings.length >= 3 ? data.Ratings[2].Source : "No Metacritic Rating"}
+				<span>${data.Ratings.length >= 3 ? data.Ratings[2].Value : ""}</span>
+			</p>
 			<p>Original Release: ${data.Released}</p>
 			<p>Runtime: ${data.Runtime}</p>
 			<p>Director: ${data.Director}</p>
 			<p>Actors: ${data.Actors}</p>
 			<p>Awards: ${data.Awards}</p>
-		</div>`)
+		</div>`);
+	console.log(data.Ratings);
 
 }
-
 var pageToken = {};
 
 $('.overlayBg').click(function () {
@@ -73,7 +83,7 @@ function searchYoutube() {
 	        html += '<div class="col-4"><p class="title">' + value.snippet.title + '</p>';
 	        //html += '<p class="url"><a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="_blank">' + value.id.videoId + '</a></p>';
 	        html += '<p><img  class="thumbnail" src="' + value.snippet.thumbnails.medium.url + '" videoID="' + value.id.videoId + '"></p>';
-	        html += '</div>';
+	        html += '</div>';	        
 	    })
 	    $('#videoResults').html(html);
 	})
