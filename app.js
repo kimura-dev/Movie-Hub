@@ -4,21 +4,20 @@ $('.overlayBg').hide()
 
 $('#submit').click(function(e){
 	e.preventDefault();
-	OMDBRequest();
+	omdbRequest();
 });
 
-function OMDBRequest(){
+function omdbRequest(){
 	$('#submit').click(function(){
 		$.getJSON('https://www.omdbapi.com/?t='+$('#search').val()+'&y='+$('#year').val()+'&plot=full&apikey=eefeda9a',function(data){
-			console.log(data);
-			showResults(data);
+			omdbResults(data);
 			searchYoutube();
 		})
 	})
 
 }
 
-function showResults(data){
+function omdbResults(data){
 	$('#output').html(`
 		<div class="col-4">
 			<h2>${data.Title}</h2>
@@ -42,6 +41,17 @@ function showResults(data){
 
 var pageToken = {};
 
+$('.overlayBg').click(function () {
+    $('.popup').hide()
+    $('.overlayBg').hide()
+})
+$('#videoResults').on('click', '.thumbnail', function () {
+    $('.popup').show()
+    $('.overlayBg').show();
+    $(window).scrollTop(0)
+    $('.popup iframe').attr('src', 'https://www.youtube.com/embed/' + $(this).attr('videoID'));
+})
+
 function searchYoutube() {
 	let query = $('#search').val()+' '+'the movie';
 	$.ajax({
@@ -50,12 +60,12 @@ function searchYoutube() {
 	    , type: 'GET'
 	    , data: {
 	        key: 'AIzaSyA9YIeJMUAUAO5QaCo0wzfbdGlLIbjo1D4'
-	        , q: query//$('#search').val()
+	        , q: query
 	        , part: 'snippet'
 	        , maxResults: 6
 	        , pageToken: pageToken.current
 	    }
-	}).done(function vidResults (data) {
+	}).done(function youtubeOutput (data) {
 	    pageToken.nextPage = data.nextPageToken;
 	    pageToken.prevPage = data.prevPageToken;
 	    var html = "";
@@ -68,16 +78,6 @@ function searchYoutube() {
 	    $('#videoResults').html(html);
 	})
 }	
-	
-$('.overlayBg').click(function () {
-    $('.popup').hide()
-    $('.overlayBg').hide()
-})
-$('#videoResults').on('click', '.thumbnail', function () {
-    $('.popup').show()
-    $('.overlayBg').show();
-    $(window).scrollTop(0)
-    $('.popup iframe').attr('src', 'https://www.youtube.com/embed/' + $(this).attr('videoID'));
-})
+
 
 

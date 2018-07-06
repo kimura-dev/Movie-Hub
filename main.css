@@ -33,3 +33,13 @@ input {
     width:100%;
     min-height:100%;
 }
+
+#videoResults {
+  margin: 0 auto;
+  width: 1140px;
+  height: 100%;
+}
+
+.thumbnail {
+	margin: 10px;
+}
