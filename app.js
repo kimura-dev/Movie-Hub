@@ -27,9 +27,9 @@ function omdbResults(data){
 			<p><strong>Plot</strong>: ${data.Plot}</p>
 		</div>
 		<div class="col-4">
-			<p>${data.Ratings[0].Source}:<span>${data.Ratings[0].Value}</span></p>
-			<p>${data.Ratings[1].Source}:<span>${data.Ratings[1].Value}</span></p>
-			<p>${data.Ratings[2].Source}:<span>${data.Ratings[2].Value}</span></p>
+			<p><img src="imdb.png"> <span>${data.Ratings[0].Value}</span></p>
+			<p><img src="icons8-rotten-tomatoes-40.png"> <span>${data.Ratings[1].Value}</span></p>
+			<p>${data.Ratings[2].Source} <span>${data.Ratings[2].Value}</span></p>
 			<p>Release Date: ${data.Released}</p>
 			<p>Runtime: ${data.Runtime}</p>
 			<p>Director: ${data.Director}</p>
@@ -62,7 +62,7 @@ function searchYoutube() {
 	        key: 'AIzaSyA9YIeJMUAUAO5QaCo0wzfbdGlLIbjo1D4'
 	        , q: query
 	        , part: 'snippet'
-	        , maxResults: 6
+	        , maxResults: 12
 	        , pageToken: pageToken.current
 	    }
 	}).done(function youtubeOutput (data) {
