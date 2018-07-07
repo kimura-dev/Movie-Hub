@@ -82,4 +82,24 @@ input {
     cursor: pointer;
 }
 
+.imdb {
+    font-size: 30px;
+}
+
+#meta {
+    font-size: 30px;
+}
+
+#plt {
+    margin-top: 45px;
+}
+
+#info {
+    margin-top: 35px;
+}
+
+.mcrit {
+    text-transform: uppercase;
+}
+
 

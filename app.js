@@ -39,15 +39,16 @@ function omdbResults(data){
 			<h2>${data.Title}</h2>
 			<img src="${data.Poster}" class="poster">
 		</div>
-		<div class="col-4">
+		<div id="plt" class="col-4">
 			<p><strong>Plot</strong>: ${data.Plot}</p>
 		</div>
-		<div class="col-4">
-			<p><img src="imdb.png"> <span>${data.Ratings[0].Value}</span></p>
-			<p><img src="icons8-rotten-tomatoes-40.png"> <span>${data.Ratings[1].Value}</span></p>
-			<p>${data.Ratings.length >= 3 ? data.Ratings[2].Source : "No Metacritic Rating"}
+		<div id="info" class="col-4">
+			<p><img src="imdb.png" class="imdb" alt="IMDB icon"> <span>${data.Ratings[0].Value}</span></p>
+			<p><img src="icons8-rotten-tomatoes-40.png" alt="rotten tomato icon"> <span>${data.Ratings[1].Value}</span></p>
+			<p class="mcrit"><img id="meta" src="metacritic-icon.png" alt="metacritic icon">${data.Ratings.length >= 3 ? data.Ratings[2].Source : "No Metacritic Rating"}
 				<span>${data.Ratings.length >= 3 ? data.Ratings[2].Value : ""}</span>
 			</p>
+			<hr>
 			<p>Original Release: ${data.Released}</p>
 			<p>Runtime: ${data.Runtime}</p>
 			<p>Director: ${data.Director}</p>
