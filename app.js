@@ -106,7 +106,7 @@ function searchYoutube() {
 }	
 
 function wikiResults() {
-	let searchTerm = $('#search').val()+' '+'movie';
+	let searchTerm = $('#search').val()+' '+'film';
 	let url = 'https://en.wikipedia.org/w/api.php?action=query&titles='+$('#search').val()+'&rvprop=content&format=json&action=opensearch&origin=*&search=' + searchTerm;
 	$.getJSON(url, function (response) {
 	    console.log(response)

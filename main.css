@@ -1,5 +1,8 @@
 body {
   background-color: #8FDCFF;
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url("https://i.ytimg.com/vi/5znji1uGNIs/maxresdefault.jpg");
+  background-size: cover;
+  color: #fff;
 }
 
 label {
@@ -8,6 +11,10 @@ label {
 
 input {
 	display: block;
+}
+
+a {
+    color: white;
 }
 
 .popup{
