@@ -42,6 +42,7 @@ function omdbResults(data){
 		<div id="plt" class="col-4">
 			<p><strong>Plot</strong>: ${data.Plot}</p>
 		</div>
+		<hr>
 		<div id="info" class="col-4">
 			<p><img src="imdb.png" class="imdb" alt="IMDB icon"> <span>${data.Ratings[0].Value}</span></p>
 			<p><img src="icons8-rotten-tomatoes-40.png" alt="rotten tomato icon"> <span>${data.Ratings[1].Value}</span></p>
