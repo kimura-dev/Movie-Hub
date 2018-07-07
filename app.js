@@ -3,7 +3,7 @@ $('.popup').hide();
 $('.overlayBg').hide();
 $('#prevBtn').hide();
 $('#nextBtn').hide();
-
+$('.resultTitle').hide();
 
 $('form').submit(function(e){
 	e.preventDefault();
@@ -17,6 +17,7 @@ function omdbRequest(){
 			omdbResults(data);
 			searchYoutube();
 			wikiResults();
+			$('.resultTitle').show();
 			$('#prevBtn').show();
 			$('#nextBtn').show();
 		});
@@ -36,7 +37,7 @@ function omdbResults(data){
 	$('#output').html(`
 		<div class="col-4">
 			<h2>${data.Title}</h2>
-			<img src="${data.Poster}">
+			<img src="${data.Poster}" class="poster">
 		</div>
 		<div class="col-4">
 			<p><strong>Plot</strong>: ${data.Plot}</p>

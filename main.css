@@ -37,8 +37,6 @@ input {
 
 #videoResults {
   margin: 0 auto;
-  /*width: 1140px;*/
-  /*height: 100%;*/
 }
 
 .thumbnail:hover {
@@ -50,8 +48,38 @@ input {
     display: inline-block;
 }
 
+#prevBtn, #nextBtn {
+    padding: 10px;
+    width: 25%;
+}
+
+#prevBtn {
+    margin-right: 50px;
+}
+
+#prevBtn:hover {
+    cursor: pointer;
+}
+
+#nextBtn {
+    padding: 10px;
+    width: 25%;
+}
+
+#nextBtn:hover {
+    cursor: pointer;
+}
+
 .thumbnail {
     width: 100%;
+}
+
+.poster {
+    width: 100%;
+}
+
+#submit:hover {
+    cursor: pointer;
 }
 
 
