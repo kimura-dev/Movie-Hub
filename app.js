@@ -1,6 +1,9 @@
 
-$('.popup').hide()
-$('.overlayBg').hide()
+$('.popup').hide();
+$('.overlayBg').hide();
+$('#prevBtn').hide();
+$('#nextBtn').hide();
+
 
 $('form').submit(function(e){
 	e.preventDefault();
@@ -14,6 +17,8 @@ function omdbRequest(){
 			omdbResults(data);
 			searchYoutube();
 			wikiResults();
+			$('#prevBtn').show();
+			$('#nextBtn').show();
 		});
 
 	})
@@ -86,7 +91,8 @@ function searchYoutube() {
 	 	    pageToken.prevPage = data.prevPageToken;
 	    var html = "";
 	    $.each(data['items'], function (index, value) {
-	        html += '<div class="col-4"><p class="title">' + value.snippet.title + '</p>';
+	  		html += '<div class=col-4>'
+	        html += '<p class="title">' + value.snippet.title + '</p>';
 	        //html += '<p class="url"><a href="https://www.youtube.com/watch?v=' + value.id.videoId + '" target="_blank">' + value.id.videoId + '</a></p>';
 	        html += '<p><img  class="thumbnail" src="' + value.snippet.thumbnails.medium.url + '" videoID="' + value.id.videoId + '"></p>';
 	        html += '</div>';	        
