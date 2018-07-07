@@ -54,7 +54,8 @@ function omdbResults(data){
 			<p>Director: ${data.Director}</p>
 			<p>Actors: ${data.Actors}</p>
 			<p>Awards: ${data.Awards}</p>
-		</div>`);
+		</div>
+		<hr>`);
 }
 
 let pageToken = {};
@@ -106,29 +107,12 @@ function searchYoutube() {
 function wikiResults() {
 	let searchTerm = $('#search').val()+' '+'movie';
 	let url = 'https://en.wikipedia.org/w/api.php?action=query&titles='+$('#search').val()+'&rvprop=content&format=json&action=opensearch&origin=*&search=' + searchTerm;
-	//let outputWiki = $('#outputWiki').html(`<h2>Movie Search ${searchTerm}</h2>`);
 	$.getJSON(url, function (response) {
 	    console.log(response)
 		
 		for (var x in response) {
 	        var holder = typeof response[x] == 'string' ? response[x] : response[x][0];
 	        $('#outputWiki').html(`<a href="${holder}">Wiki Info</a>`);
-	        //console.log(holder);
 	    }   
 	})
 }
-
-/*$.ajax( {
-    url: 'https://en.wikipedia.org/w/api.php?action=query&titles='+$('#search').val()+'&rvprop=content&format=json',
-    dataType: 'json',
-    type: 'POST',
-    headers: { 'Api-User-Agent': 'Example/1.0' },
-    success: function(response) {
-    	for (var x in response) {
-	        var holder = typeof response[x] == 'string' ? response[x] : response[x][0];
-	        $('#outputWiki').html(`<a href="${holder}">Wiki Info</a>`);
-	    }
-    }
-});*/
-  //&action=opensearch&origin=*&search=' + searchTerm
-//'<div class="dataOutput">' + holder + '</div>'

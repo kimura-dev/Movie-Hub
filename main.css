@@ -50,11 +50,10 @@ input {
 
 #prevBtn, #nextBtn {
     padding: 10px;
-    width: 25%;
 }
 
 #prevBtn {
-    margin-right: 50px;
+    margin-right: 100px;
 }
 
 #prevBtn:hover {
@@ -63,7 +62,6 @@ input {
 
 #nextBtn {
     padding: 10px;
-    width: 25%;
 }
 
 #nextBtn:hover {
