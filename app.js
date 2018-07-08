@@ -44,8 +44,8 @@ function omdbResults(data){
 		</div>
 		<hr>
 		<div id="info" class="col-4">
-			<p><img src="imdb.png" class="imdb" alt="IMDB icon"> <span>${data.Ratings[0].Value}</span></p>
-			<p><img src="icons8-rotten-tomatoes-40.png" alt="rotten tomato icon"> <span>${data.Ratings[1].Value}</span></p>
+			<p><img src="imdb.png" class="imdb" alt="IMDB icon">${data.Ratings[0].Source} <span>${data.Ratings[0].Value}</span></p>
+			<p><img src="icons8-rotten-tomatoes-40.png" alt="rotten tomato icon">${data.Ratings[1].Source} <span>${data.Ratings[1].Value}</span></p>
 			<p class="mcrit"><img id="meta" src="metacritic-icon.png" alt="metacritic icon">${data.Ratings.length >= 3 ? data.Ratings[2].Source : "No Metacritic Rating"}
 				<span>${data.Ratings.length >= 3 ? data.Ratings[2].Value : ""}</span>
 			</p>
@@ -57,6 +57,8 @@ function omdbResults(data){
 			<p>Awards: ${data.Awards}</p>
 		</div>
 		<hr>`);
+	
+	$('.resultTitle').html(`${data.Title} Video Results`);
 }
 
 let pageToken = {};
@@ -113,7 +115,7 @@ function wikiResults() {
 		
 		for (var x in response) {
 	        var holder = typeof response[x] == 'string' ? response[x] : response[x][0];
-	        $('#outputWiki').html(`<a href="${holder}">Wiki Info</a>`);
+	        $('#outputWiki').html(`<a href="${holder}"><ion-icon name="information-circle-outline" class="info-icon"></ion-icon></a>`);
 	    }   
 	})
 }

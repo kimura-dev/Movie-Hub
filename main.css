@@ -1,6 +1,6 @@
 body {
   background-color: #8FDCFF;
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url("https://i.ytimg.com/vi/5znji1uGNIs/maxresdefault.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("https://ak5.picdn.net/shutterstock/videos/1581355/thumb/1.jpg");
   background-size: cover;
   color: #fff;
 }
@@ -46,6 +46,10 @@ a {
   margin: 0 auto;
 }
 
+#plt, #info {
+  
+}
+
 .thumbnail:hover {
 	cursor: pointer;
 	background-color: rgba(0,0,0,0.6);
@@ -57,10 +61,11 @@ a {
 
 #prevBtn, #nextBtn {
     padding: 10px;
+    margin-top: 60px;
 }
 
 #prevBtn {
-    margin-right: 100px;
+    margin-right: 175px;
 }
 
 #prevBtn:hover {
@@ -101,6 +106,15 @@ a {
 
 #info {
     margin-top: 35px;
+}
+
+.info-icon {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.info-icon:hover {
+    color: #e5e5e5;
 }
 
 .mcrit {
