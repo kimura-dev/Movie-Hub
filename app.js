@@ -36,6 +36,7 @@ function omdbResults(data){
 	//console.log(data.Ratings);
 	let tomato = "icons8-tomato-48.png"
 	let rotten = "icons8-rotten-tomatoes-40.png"
+	console.log(data.Ratings[1].Source);
 	//<p class="tomatoMeter"><img src="${(parseInt(data.Ratings[1].Value) > 59) ? tomato : rotten}">${data.Ratings[1].Source}</p>
 	//<p class="tomatoMeter"><img src="icons8-tomato-48.png" alt="rotten tomato icon">${data.Ratings[1].Source} <span>${data.Ratings[1].Value}</span></p>
 	$('#output').html(`
@@ -48,8 +49,8 @@ function omdbResults(data){
 		</div>
 		<hr>
 		<div id="info" class="col-4">
-			<p><img src="imdb.png" class="imdb" alt="IMDB icon">${data.Ratings[0].Source} <span>${data.Ratings[0].Value}</span></p>
-			<p class="tomatoMeter"><img src="${(parseInt(data.Ratings[1].Value) > 59) ? tomato : rotten}">${data.Ratings[1].Source}</p>
+			<p><img src="imdb.png" class="imdb" alt="IMDB icon">${data.Ratings[0].Value} <span>${data.Ratings[0].Source}</span></p>
+			<p class="tomatoMeter"><img src="${(parseInt(data.Ratings[1].Value) > 59) ? tomato : rotten}" class="tomType">${data.Ratings[1].Value} ${data.Ratings[1].Source}</p>
 			<p class="mcrit"><img id="meta" src="metacritic-icon.png" alt="metacritic icon">${data.Ratings.length >= 3 ? data.Ratings[2].Source : "No Metacritic Rating"}
 				<span>${data.Ratings.length >= 3 ? data.Ratings[2].Value : ""}</span>
 			</p>
